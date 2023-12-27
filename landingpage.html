@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Landing Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .pricing-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .plan {
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .plan span {
+            display: block;
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #007bff;
+        }
+
+        .pricing-toggle {
+            cursor: pointer;
+            color: #007bff;
+            text-decoration: underline;
+            display: inline-block;
+            margin: 10px;
+            font-size: 0.9em;
+        }
+
+        .currency-select {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 1em;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 600px) {
+            .pricing-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pricing-container">
+        <h1>Pricing Landing Page</h1>
+
+        <!-- Pricing structure -->
+        <div id="Product 1" class="plan">
+            <h2>Product 1</h2>
+            <p>Includes basic features</p>
+            <span>₹.199</span>
+        </div>
+
+        <div id="Product 2" class="plan" style="display: none;">
+            <h2>Product 2</h2>
+            <p>Includes advanced features</p>
+            <span>₹.3999</span>
+        </div>
+
+        <!-- Interactive pricing toggles -->
+        <p class="pricing-toggle" onclick="togglePricing('Product 1', 'Product 2')">Switch to Product 2</p>
+        <p class="pricing-toggle" onclick="togglePricing('Product 2', 'Product 1')">Switch to Product 1</p>
+
+        <!-- Currency and unit customization -->
+        <div class="currency-select">
+            <label for="currency">Select Currency:</label>
+            <select id="currency" onchange="changeCurrency()">
+                <option value="₹">IND</option>
+                <option value="$">USD</option>
+                <option value="€">EUR</option>
+                <option value="£">GBP</option>
+            </select>
+        </div>
+
+        <!-- JavaScript for interactive elements -->
+        <script>
+            function togglePricing(showId, hideId) {
+                document.getElementById(showId).style.display = 'block';
+                document.getElementById(hideId).style.display = 'none';
+            }
+
+            function changeCurrency() {
+                const currency = document.getElementById('currency').value;
+                document.querySelectorAll('.plan span').forEach(element => {
+                    element.textContent = element.textContent.replace(/[₹$€£]/g, currency);
+                });
+            }
+        </script>
+    </div>
+</body>
+</html>
